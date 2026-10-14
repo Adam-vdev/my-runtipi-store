@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.runtipi.io/app-info.json",
+  "name": "Debian Web",
+  "id": "debian-web",
+  "available": true,
+  "short_desc": "Debian XFCE desktop in your browser",
+  "author": "custom",
+  "port": 8590,
+  "categories": ["utilities", "development"],
+  "description": "Full Debian (XFCE) desktop accessible from the web browser using LinuxServer Webtop.",
+  "tipi_version": 1,
+  "version": "latest",
+  "source": "https://github.com/linuxserver/docker-webtop",
+  "exposable": true,
+  "dynamic_config": false,
+  "supported_architectures": ["amd64", "arm64"],
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "Username",
+      "required": true,
+      "env_variable": "DEBIAN_WEB_USER",
+      "default": "admin"
+    },
+    {
+      "type": "password",
+      "label": "Password",
+      "required": true,
+      "min": 8,
+      "env_variable": "DEBIAN_WEB_PASSWORD"
+    }
+  ]
+}
