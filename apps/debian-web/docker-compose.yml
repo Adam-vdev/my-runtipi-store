@@ -15,9 +15,14 @@ services:
       - PASSWORD=${DEBIAN_WEB_PASSWORD}
     volumes:
       - ${APP_DATA_DIR}/data/config:/config
-    ports:
-      - ${APP_PORT}:3000
-    networks:
-      - tipi_main_network
     labels:
       runtipi.managed: true
+    # Tells Tipi which port the container serves web UI traffic on internally
+    x-runtipi:
+      is_main: true
+      internal_port: 3000
+
+# Declare the schema version so RunTipi passes the validation test
+x-runtipi:
+  schema_version: 2
+
