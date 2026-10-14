@@ -1,0 +1,64 @@
+{
+  "$schema": "https://schemas.runtipi.io/app-info.json",
+  "name": "VM (QEMU)",
+  "id": "vm",
+  "available": true,
+  "short_desc": "Virtual machine in your browser - install any OS and access it via RDP",
+  "author": "dockur",
+  "port": 8006,
+  "categories": ["utilities", "development"],
+  "description": "QEMU virtual machine container (qemux/qemu). Install any guest OS from the web console or an ISO URL, persist the virtual disk, and reach the guest over RDP. Requires KVM (/dev/kvm) on the host.",
+  "tipi_version": 1,
+  "version": "7.50",
+  "source": "https://github.com/dockur/qemu",
+  "exposable": true,
+  "dynamic_config": true,
+  "supported_architectures": ["amd64", "arm64"],
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "Guest OS or ISO URL",
+      "required": true,
+      "default": "ubuntu",
+      "placeholder": "ubuntu",
+      "hint": "A distro name supported by qemux/qemu (ubuntu, mint, debian, fedora, arch, alpine, kali...) or a direct ISO/image URL",
+      "env_variable": "VM_OS"
+    },
+    {
+      "type": "number",
+      "label": "RAM (GB)",
+      "required": true,
+      "default": 4,
+      "min": 1,
+      "hint": "RAM assigned to the VM",
+      "env_variable": "VM_RAM_GB"
+    },
+    {
+      "type": "number",
+      "label": "CPU Cores",
+      "required": true,
+      "default": 2,
+      "min": 1,
+      "hint": "CPU cores assigned to the VM",
+      "env_variable": "VM_CPU_CORES"
+    },
+    {
+      "type": "number",
+      "label": "Disk Size (GB)",
+      "required": true,
+      "default": 64,
+      "min": 8,
+      "hint": "Virtual disk size, allocated dynamically",
+      "env_variable": "VM_DISK_GB"
+    },
+    {
+      "type": "number",
+      "label": "RDP Port on Host",
+      "required": true,
+      "default": 3389,
+      "min": 1024,
+      "hint": "Host port forwarded to the guest RDP port (3389)",
+      "env_variable": "VM_RDP_PORT"
+    }
+  ]
+}

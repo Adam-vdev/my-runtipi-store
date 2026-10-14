@@ -1,0 +1,29 @@
+services:
+  vm:
+    image: qemux/qemu:7.50
+    container_name: vm
+    restart: unless-stopped
+    stop_grace_period: 2m
+    devices:
+      - /dev/kvm
+      - /dev/net/tun
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - BOOT=${VM_OS}
+      - RAM_SIZE=${VM_RAM_GB}G
+      - CPU_CORES=${VM_CPU_CORES}
+      - DISK_SIZE=${VM_DISK_GB}G
+      - DISPLAY=web
+      - USER_PORTS=3389
+    ports:
+      - "${VM_RDP_PORT}:3389/tcp"
+      - "${VM_RDP_PORT}:3389/udp"
+    volumes:
+      - ${APP_DATA_DIR}/data/storage:/storage
+    x-runtipi:
+      is_main: true
+      internal_port: 8006
+
+x-runtipi:
+  schema_version: 2
