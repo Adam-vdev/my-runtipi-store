@@ -12,7 +12,8 @@
   "version": "latest",
   "source": "https://github.com/linuxserver/docker-webtop",
   "exposable": true,
-  "dynamic_config": false,
+"https": true,
+  "dynamic_config": true,
   "supported_architectures": ["amd64", "arm64"],
   "form_fields": [
     {
