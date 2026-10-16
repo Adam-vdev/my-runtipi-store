@@ -8,7 +8,7 @@
   "port": 8006,
   "categories": ["utilities", "development"],
   "description": "QEMU virtual machine container (qemux/qemu). Install any guest OS from the web console or an ISO URL, persist the virtual disk, and reach the guest over RDP. Requires KVM (/dev/kvm) on the host.",
-  "tipi_version": 1,
+  "tipi_version": 2,
   "version": "7.50",
   "source": "https://github.com/dockur/qemu",
   "exposable": true,
